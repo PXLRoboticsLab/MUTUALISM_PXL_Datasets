@@ -43,13 +43,17 @@ If the provided loader do not load the dataset as wanted. You can override with 
 Import a baseclass:  
 ``from PXL_datasets.pxl_dataset_loader_kaggle import PXL_dataset_loader_kaggle``  
 Override functions:  
-``class custom_loader(PXL_dataset_loader_kaggle):``  
-....``def download_dataset(self, url: str, dataset_source: PXL_dataset_sources, dataset_name: str, save_directory: str):``  
-........``#implement you own if needed``  
-........``super().download_dataset(url, dataset_source, dataset_name, save_directory)``  
-....``def save_dataset(self, dataset_type: PXL_dataset_types, df_map: map, save_directory: str):``  
-........``#implement you own if needed``  
-........``super().save_dataset(dataset_type, df_map, save_directory)``  
+
+```
+class custom_loader(PXL_dataset_loader_kaggle):
+    def download_dataset(self, url: str, dataset_source: PXL_dataset_sources, dataset_name: str, save_directory: str):
+        #implement you own if needed 
+        super().download_dataset(url, dataset_source, dataset_name, save_directory)
+    def save_dataset(self, dataset_type: PXL_dataset_types, df_map: map, save_directory: str):
+        #implement you own if needed
+        super().save_dataset(dataset_type, df_map, save_directory)
+```
+
 Create an instance of you custom loader  
 ``loader = custom_loader()``  
 
