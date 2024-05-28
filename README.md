@@ -1,3 +1,13 @@
+TODO: onderverdelen in submappen
+- lib (alle library python files)
+- examples (example flow)
+
+In de readme ook verwijzen naar
+1. de lib files
+2. de examples
+
+
+
 # PXL_Datasets  
 
 *Welcome to the PXL_Datasets library! This versatile library enables you to easily download datasets from multiple sources, convert, view, and enhance them. With the standard or your custom loaders, you can standardize the format and streamline your data handling processes for more efficient analysis and machine learning workflows.*   
