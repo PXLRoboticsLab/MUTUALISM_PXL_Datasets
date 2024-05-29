@@ -1,13 +1,3 @@
-TODO: onderverdelen in submappen
-- lib (alle library python files)
-- examples (example flow)
-
-In de readme ook verwijzen naar
-1. de lib files
-2. de examples
-
-
-
 # PXL_Datasets  
 
 *Welcome to the PXL_Datasets library! This versatile library enables you to easily download datasets from multiple sources, convert, view, and enhance them. With the standard or your custom loaders, you can standardize the format and streamline your data handling processes for more efficient analysis and machine learning workflows.*   
@@ -18,63 +8,93 @@ The recommended way of using this is by adding it as submodule to your own repos
 
 **1. Adding this as submodule to your repo**  
 please run this in the terminal in the folder where your notebook or program you want to use this for is.   
-``git submodule add https://github.com/PXLRoboticsLab/PXL_Datasets.git``  
+```  
+git submodule add https://github.com/PXLRoboticsLab/PXL_Datasets.git  
+```   
 or  
-``git submodule add git@github.com:PXLRoboticsLab/PXL_Datasets.git``  
+```  
+git submodule add git@github.com:PXLRoboticsLab/PXL_Datasets.git
+```  
+
+From here you can follow the instructions below or see a completed example in the [examples](./examples) folder.
 
 **2. intalling the additional libraries**  
-``pip install opendatasets``  
+```  
+pip install opendatasets  
+```  
 and
-``pip install kaggle``  
+```  
+pip install kaggle  
+```  
 
 **3. Importing this into your program or notebook and creating an instance**  
 If you want to download *segmentation* dataset:  
-``from PXL_datasets.pxl_dataset_segmentation import PXL_segmentation_dataset``  
-``dataset = PXL_segmentation_dataset()``  
+```  
+from PXL_datasets.pxl_dataset_segmentation import PXL_segmentation_dataset  
+dataset = PXL_segmentation_dataset()
+```  
 If you want to download *classification* dataset:  
-``from PXL_datasets.pxl_dataset_classification import PXL_classification_dataset``  
-``dataset = PXL_classification_dataset()``  
+```  
+from PXL_datasets.pxl_dataset_classification import PXL_classification_dataset  
+dataset = PXL_classification_dataset()  
+```  
 If you want to download *object detection* dataset:  
-``from PXL_datasets.pxl_dataset_object_detection import PXL_object_detection_dataset``  
-``dataset = PXL_object_detection_dataset()``  
+```  
+from PXL_datasets.pxl_dataset_object_detection import PXL_object_detection_dataset  
+dataset = PXL_object_detection_dataset()  
+```  
 
 **4. Choose or create a dataset loader**  
 If you download from *Kaggle*:  
-``from PXL_datasets.pxl_dataset_loader_kaggle import PXL_dataset_loader_kaggle``  
-``loader = PXL_dataset_loader_kaggle()``  
+```  
+from PXL_datasets.pxl_dataset_loader_kaggle import PXL_dataset_loader_kaggle  
+loader = PXL_dataset_loader_kaggle()  
+```  
 If you download from *Huggingface*:  
-``from PXL_datasets.pxl_dataset_loader_kaggle import PXL_dataset_loader_huggingface``  
-``loader = PXL_dataset_loader_huggingface()``  
+```  
+from PXL_datasets.pxl_dataset_loader_kaggle import PXL_dataset_loader_huggingface  
+loader = PXL_dataset_loader_huggingface()
+```  
 If you download from *Roboflow*:  
-``from PXL_datasets.pxl_dataset_loader_kaggle import PXL_dataset_loader_roboflow``  
-``loader = PXL_dataset_loader_roboflow()`` 
+```  
+from PXL_datasets.pxl_dataset_loader_kaggle import PXL_dataset_loader_roboflow  
+loader = PXL_dataset_loader_roboflow()  
+```  
 
 If the provided loader do not load the dataset as wanted. You can override with you own *custom* loader:  
 Import a baseclass:  
-``from PXL_datasets.pxl_dataset_loader_kaggle import PXL_dataset_loader_kaggle``  
+```  
+from PXL_datasets.pxl_dataset_loader_kaggle import PXL_dataset_loader_kaggle  
+```  
 Override functions:  
-
-```
-class custom_loader(PXL_dataset_loader_kaggle):
-    def download_dataset(self, url: str, dataset_source: PXL_dataset_sources, dataset_name: str, save_directory: str):
-        #implement you own if needed 
-        super().download_dataset(url, dataset_source, dataset_name, save_directory)
-    def save_dataset(self, dataset_type: PXL_dataset_types, df_map: map, save_directory: str):
-        #implement you own if needed
-        super().save_dataset(dataset_type, df_map, save_directory)
-```
+```  
+class custom_loader(PXL_dataset_loader_kaggle):  
+    def download_dataset(self, url: str, dataset_source: PXL_dataset_sources, dataset_name: str, save_directory: str):  
+        #implement you own if needed  
+        super().download_dataset(url, dataset_source, dataset_name, save_directory)  
+    def save_dataset(self, dataset_type: PXL_dataset_types, df_map: map, save_directory: str):  
+        #implement you own if needed  
+        super().save_dataset(dataset_type, df_map, save_directory)  
+```  
 
 Create an instance of you custom loader  
-``loader = custom_loader()``  
+```  
+loader = custom_loader()  
+```  
 
 **5. Load the dataset**  
-``dataset.load_from_url(loader=loader, save_directory='my_dataset_save/', url="https://www.kaggle.com/datasets/<username>/<datasetname>")``  
+```  
+dataset.load_from_url(loader=loader, save_directory='my_dataset_save/', url="https://www.kaggle.com/datasets/<username>/<datasetname>")  
+```  
 
 **6. Display your first random dataset sample**  
-``from PXL_datasets.pxl_dataset_split import PXL_dataset_split``  
-``dataset.display_random_image(PXL_dataset_split.Train)``  
-
-## Classdiagram  
+```  
+from PXL_datasets.pxl_dataset_split import PXL_dataset_split  
+dataset.display_random_image(PXL_dataset_split.Train)  
+```  
+## Library explanation:  
+The [lib](./lib) folder contains all the files that builds de library. The classdiagram below shows the functions and the relations of all the classes.
+### Classdiagram  
 
 ```mermaid
 
@@ -173,3 +193,6 @@ class PXL_value_exception{
 }
 
 ```
+
+### Old library files  
+Before the library was created, there were functions created that could be copied to the notebook they were needed. The [old](./old) folder contains these.   
