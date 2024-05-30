@@ -2,7 +2,8 @@
 
 *Welcome to the PXL_Datasets library! This versatile library enables you to easily download datasets from multiple sources, convert, view, and enhance them. With the standard or your custom loaders, you can standardize the format and streamline your data handling processes for more efficient analysis and machine learning workflows.*   
 
-## Getting started  
+## Getting started
+This should be executed in the [PXL_ML_Container](https://github.com/PXLAIRobotics/PXL_ML_Docker_v2.0_TensorFlow)
 The recommended way of using this is by adding it as submodule to your own repository.  
 *if you haven't made one for your project it's tim to add it now*  
 
